@@ -39,7 +39,7 @@ function Chat() {
         setUsers(users);
       });
     }
-  }, [user]);
+  }, [user, name, room, setMessages, setUsers]);
 
   useEffect(() => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -54,7 +54,17 @@ function Chat() {
   };
 
   return (
-    <div className="Chat">
+    <div >
+      <div>
+            {users.map((user) => {
+              return (
+                <div key={user.id}>
+                  <span>{user.name}</span>
+                </div>
+              );
+            })}
+          </div>
+
       <div className="chat-container">
               {messages.map((message, index) => {
                 const { user, text } = message;

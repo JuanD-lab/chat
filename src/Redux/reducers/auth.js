@@ -1,10 +1,13 @@
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
+    LOGOUT,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
   } from "../actions/auth";
   
+  
+  const user = JSON.parse(localStorage.getItem("user"));
   
   const initialState = user
     ? { access: true, user }
@@ -33,6 +36,13 @@ import {
         };
   
       case LOGIN_FAIL:
+        return {
+          ...state,
+          access: false,
+          user: null,
+        };
+  
+      case LOGOUT:
         return {
           ...state,
           access: false,
